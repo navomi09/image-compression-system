@@ -10,7 +10,7 @@ from decompression import rle_decode, huffman_decode
 app_tasks = defaultdict(dict)
 
 def sample_task():
-    print("✅ Running scheduled image compression task...")
+    print(" Running scheduled image compression task...")
     return "Task Executed!"
 
 def run_scheduler():
@@ -32,17 +32,17 @@ def main():
 
         if choice == "1":
             compressed_data = rle_encode(image)
-            print("✅ RLE Compressed Data:", compressed_data[:50])
+            print(" RLE Compressed Data:", compressed_data[:50])
         else:
             encoded_data, huffman_codes, root = huffman_encode(image)
-            print("✅ Huffman Compressed Data:", encoded_data[:50])
+            print(" Huffman Compressed Data:", encoded_data[:50])
 
     elif choice == "3":
         interval = int(input("Enter scheduling interval (seconds): "))
         task_id = len(app_tasks) + 1
         schedule.every(interval).seconds.do(sample_task)
         app_tasks[task_id] = {"status": "Scheduled", "interval": interval}
-        print(f"✅ Task {task_id} scheduled every {interval} seconds!")
+        print(f" Task {task_id} scheduled every {interval} seconds!")
 
 if __name__ == "__main__":
     main()
