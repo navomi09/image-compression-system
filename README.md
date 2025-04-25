@@ -1,0 +1,1 @@
+embedded image compression system using rle & huffman coding
