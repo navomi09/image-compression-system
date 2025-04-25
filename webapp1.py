@@ -31,7 +31,7 @@ if uploaded_file is not None:
     st.session_state.image = np.array(image)
     st.image(st.session_state.image, caption="Uploaded Image", use_column_width=True)
 
-if st.button("🔄 Retake or Upload Another"):
+if st.button("🔄Retake or Upload Another"):
     st.session_state.image = None
     st.session_state.compressed_rle = None
     st.session_state.compressed_huffman = None
@@ -39,7 +39,7 @@ if st.button("🔄 Retake or Upload Another"):
     st.experimental_rerun()
 
 if st.session_state.image is not None:
-    st.header("📦 Compression")
+    st.header("Compression")
     gray_image = cv2.cvtColor(st.session_state.image, cv2.COLOR_RGB2GRAY)
     
 
@@ -55,18 +55,18 @@ if st.session_state.image is not None:
     st.session_state.compressed_rle = rle_data
     st.session_state.compressed_huffman = huffman_data
 
-    st.subheader("🔸 RLE Compressed Data")
+    st.subheader("RLE Compressed Data")
     with st.expander("View RLE Data"):
         st.text_area("RLE Data", value=str(rle_data), height=300)
 
-    st.subheader("🔸 Huffman Compressed Data")
+    st.subheader("Huffman Compressed Data")
     with st.expander("View Huffman Data"):
         st.text_area("Huffman Encoded Bits", value=str(huffman_data["data"]), height=200)
 
-    st.header("📥 Decompression")
+    st.header("Decompression")
 
     rle_decoded = rle_decode(rle_data, image_shape=gray_image.shape)
     st.session_state.decompressed_image = rle_decoded
 
-    st.subheader("🖼️ Decompressed Image Preview")
+    st.subheader("Decompressed Image Preview")
     st.image(rle_decoded, caption="Decompressed Image (RLE)", use_column_width=True)
